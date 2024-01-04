@@ -10,4 +10,9 @@ all : $(EXEC)
 	$(CC) -o $@ -c $<   
 	
 $(EXEC) : $(OBJ)
-	$(CC) -o $@ $^ 
+	$(CC) -o $@ $^ ; rm -rf *.o
+
+
+	
+
+

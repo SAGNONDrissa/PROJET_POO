@@ -1,0 +1,31 @@
+    chassis *ch;
+    char typeCh;
+    bool option;
+    while(true){
+        cout << "\n____________________________________________________\n";
+        cout << "Chassis !!!"<<endl;
+        cout << "Option ? 0-STD  1-LUXE"<<endl;
+        cin >> option;
+        cout << "Type ? c-COUPE ou b-Berline"<<endl;
+        cin>>typeCh;
+        if(typeCh=='c'){
+            ch = new chassisCOUPE();
+            
+        }else if(typeCh=='b'){
+            int typeBn;
+            ch = new chassisBERLINE();
+            cout<<"Chassis Berline !!!"<<endl;
+            cout<<"Modele ? 1-STD  2-4x4  3-BREAK"<<endl;
+            cin>>typeBn; 
+            if(typeBn == 1){
+                ch = new chassisBerlineSTD();
+            }else if(typeBn ==2){
+                ch = new chassisBerline4x4();
+            }else if(typeBn ==3){
+                ch = new chassisBerlineBREAK();
+            }
+        }
+        ch->setOption(option);
+        cout<<"Prix : "<<ch->calculerPrix()<<" €"<<endl;
+        cout<<"Cx   : "<<ch->calculerCx()<< "  "<<endl;
+    }

@@ -1,0 +1,78 @@
+    Voiture *car;
+    moteur *m;
+    chassis *ch;
+    int choix_nrg;
+    int choix_cyl, choix_mth;
+    char typeCh;
+    bool option;
+    cout << "Hello...main !!!!!!!! \n";
+    
+    while(true){
+        cout << "\n________________________________________________________\n";
+        cout << "Chassis !!!"<<endl;
+        cout << "Option ? 0-STD  1-LUXE"<<endl;
+        cin >> option;
+        cout << "Type ? c-COUPE ou b-Berline"<<endl;
+        cin>>typeCh;
+        if(typeCh=='c'){
+            ch = new chassisCOUPE();
+
+        }else if(typeCh=='b'){
+            int typeBn;
+            ch = new chassisBERLINE();
+            cout<<"Chassis Berline !!!"<<endl;
+            cout<<"Modele ? 1-STD  2-4x4  3-BREAK"<<endl;
+            cin>>typeBn; 
+            if(typeBn == 1){
+                ch = new chassisBerlineSTD();
+            }else if(typeBn ==2){
+                ch = new chassisBerline4x4();
+            }else if(typeBn ==3){
+                ch = new chassisBerlineBREAK();
+            }
+        }
+        ch->setOption(option);
+
+        cout << "__________________________________\n";
+        cout << "Moteur !!! \n"<<endl;
+        cout << "TYPE MOTEUR (1-THER   2-ELEC  3-HYB)? " << endl;
+        cin >> choix_nrg;
+        if(choix_nrg==1){
+            cout << "Cylindree (valeur entiere)? " << endl;
+            cin >> choix_cyl;
+            m = new moteurTHER(choix_cyl);
+            cout<< "Entrer 1- moteurDIES ou 2- moteurESS ? "; 
+            cin >> choix_mth;
+            if (choix_mth==1)
+                m=new moteurDIES(choix_cyl);
+            else 
+                m=new moteurESS(choix_cyl); 
+        }else if(choix_nrg == 2){
+            m = new moteurELEC();
+        }else if(choix_nrg == 3){
+            cout << "Cylindree (valeur entiere)? " << endl;
+            cin >> choix_cyl;
+            moteurELEC *mel; moteurESS *mes;
+            m=new moteurHYB(choix_cyl);
+        }
+        Voiture *car1;
+        car = new Voiture(m,ch);
+        car1 = new Voiture(m,ch);
+        cout<<"__________________________________"<<endl;
+        cout<<"Prix chassis        | "<<ch->calculerPrix()<<" €"<<endl;
+        cout<<"Cx   chassis        | "<<ch->calculerCx()<< "  "<<endl;
+        cout<<"Puissance moteur    | "<< m->calculerPuissance()<<" cv \n";
+        cout<<"Consommation moteur | "<< m->calculerConsommation()<<endl;
+        cout<<"Prix moteur         | "<< m->calculerPrix() <<" €"<< endl;
+        //cout<<"Prix Voiture        | "<< car->calculerPrix() <<" €"<<endl;
+        cout<<"Vitesse Voiture     | "<< car->calculerVitesseMax()<<" Km/h"<<endl;
+        for(int i =0;i<10;i++){
+            
+            cout<<" | "<<car->gettypeCh()<<" | "<<car->getNbportes()<<" P | "<<car->getOption()<<" | "<<car->getCylindree()<<" | "<<car->gettypeM()<<" | "<<car->getPuissance()<<" CV | "<<car->calculerVitesseMax()<<" Km/h | "<< car->calculerPrix()<<" € |"<<endl;
+            cout<<" -------------------------------------------------------------------------\n";
+            cout<<" | "<<car1->gettypeCh()<<" | "<<car1->getNbportes()<<" P | "<<car1->getOption()<<" | "<<car1->getCylindree()<<" | "<<car1->gettypeM()<<" | "<<car1->getPuissance()<<" CV | "<<car1->calculerVitesseMax()<<" Km/h | "<< car1->calculerPrix()<<" € |"<<endl;
+            cout<<" -------------------------------------------------------------------------\n";
+        }
+        
+
+    } 

@@ -1,3 +1,4 @@
+#include <iomanip>
 #include <iostream>
 using namespace std;
 #include <list> 
@@ -16,11 +17,16 @@ void dataBase::inserer(Voiture *vp)
 
 void dataBase::lister()
 {
+    cout<<setprecision(2);
     cout<<"\n Liste des modeles en commande***************"<<endl;
+    cout<<"  _____________________________________________________________________________"<<endl;
     for (auto i = carsDB.begin(); i != carsDB.end(); i++)
-    {
-        cout<<"-------------------------------------------------------------------------"<<endl;
-        cout<<" | "<<(*i)->gettypeCh()<<" | "<<(*i)->getNbportes()<<" P | "<<(*i)->getOption()<<" | "<<(*i)->getCylindree()<<" | "<<(*i)->gettypeM()<<" | "<<(*i)->getPuissance()<<" CV | "<<(*i)->calculerVitesseMax()<<" Km/h | "<< (*i)->calculerPrix()<<" € |"<<endl;
+    {           
+        if((*i)->gettypeM()=="ELEC"){
+            cout<<fixed<<" | "<<(*i)->gettypeCh()<<" | "<<(*i)->getNbportes()<<" P | "<<(*i)->getOption()<<" | "<<(*i)->getCylindree()<<" | "<<(*i)->gettypeM()<<" |  "<<(*i)->getPuissance()<<" CV | "<<(*i)->calculerVitesseMax()<<" Km/h | "<< (*i)->calculerPrix()<<" € |"<<endl;    
+        }else
+            cout<<fixed<<" | "<<(*i)->gettypeCh()<<" | "<<(*i)->getNbportes()<<" P | "<<(*i)->getOption()<<" | "<<(*i)->getCylindree()<<" | "<<(*i)->gettypeM()<<" | "<<(*i)->getPuissance()<<" CV | "<<(*i)->calculerVitesseMax()<<" Km/h | "<< (*i)->calculerPrix()<<" € |"<<endl;
+        cout<<" |__________|_____|______|_______|______|___________|_____________|____________|"<<endl;        
     }
 };
 

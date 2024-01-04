@@ -5,7 +5,6 @@ using namespace std;
 #include "moteur.hpp"
 #include "chassis.hpp"
 #include "voiture.hpp"
-#include "point.hpp"
 #include "configurator.hpp"
 #include "dataBase.hpp"
 

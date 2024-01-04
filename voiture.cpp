@@ -20,8 +20,7 @@ Voiture::Voiture(moteur *m, chassis *ch){
 }
 
 float Voiture::calculerPrix(){
-    prix+=m->calculerPrix();
-    prix+=ch->calculerPrix();
+    prix=25000+m->calculerPrix()+ch->calculerPrix();
     return prix;
 }
 

@@ -1,3 +1,4 @@
+//moteur.cpp
 #include <iostream>
 using namespace std;
 #include <math.h>
@@ -8,25 +9,18 @@ moteur::moteur(){
     puissance = 0;
     consommation = 0;
 };
-float moteur::getPuissance(){
-    return puissance;
-};
-float moteur::getConsommation(){
-    return consommation;
-};
+float moteur::getPuissance(){return puissance;};
+float moteur::getConsommation(){return consommation;};
 string moteur::gettypeM(){return typeM;};
 int moteur::getCylindree(){return cylindree;};
 
 /*___________________MOTEUR THERMIQUE ET COMPAGNIE ____________________*/
 moteurTHER::moteurTHER(int c){   
     cylindree = c;   Q = 0.055;
-    typeM = "TH    ";
-    consommation = 0;
+    typeM = "TH    ";  consommation = 0;
 };
 
-void moteurTHER::setCylindree(int c){
-    cylindree = c;
-};
+void moteurTHER::setCylindree(int c){cylindree = c;};
 
 int moteurTHER::getK(){return K;};
 
@@ -34,21 +28,14 @@ float moteurTHER::calculerConsommation(){
     consommation = (Q * this->calculerPuissance()); // A COMPLETER
     return consommation;
 };
-float moteurTHER::calculerPrix(){
-    return 0;
-};
+float moteurTHER::calculerPrix(){return 0;};
 
-moteurESS::moteurESS(int c):moteurTHER(c){   
-    K = 0.07; typeM = "ESS ";
-};
+moteurESS::moteurESS(int c):moteurTHER(c){K = 0.07; typeM = "ESS ";};
 
-moteurDIES::moteurDIES(int c):moteurTHER(c){   
-    K = 0.06; typeM = "DIES";
-};
+moteurDIES::moteurDIES(int c):moteurTHER(c){K = 0.06; typeM = "DIES";};
 
 float moteurTHER::calculerPuissance(){
-    puissance = cylindree * K;
-    return puissance;
+    puissance = cylindree * K; return puissance;
 };  
 
 // MOTEUR DIESEL
@@ -57,7 +44,10 @@ float moteurDIES::calculerConsommation(){
     return consommation;
 };
 
-float moteurDIES::calculerPrix(){ prix = 2000;
+float moteurDIES::calculerPrix(){ 
+    if(cylindree==2200)
+        prix = 2000+1000;
+    else  prix = 2000;
     return prix;
 };
 
@@ -66,33 +56,27 @@ float moteurESS::calculerConsommation(){
     consommation = (Q * this->calculerPuissance());
     return consommation;
 };
-float moteurESS::calculerPrix(){ prix = 0;
+float moteurESS::calculerPrix(){ 
+    if(cylindree==2200)
+        prix = 0+1000;
+    else  prix = 0;
     return prix;
 };
 
 
 /*___________________MOTEUR ELECTRIQUE ET COMPAGNIE ____________________*/
-moteurELEC::moteurELEC(){
-    puissance = 95.0 ; typeM = "ELEC"; cylindree = 0;
-};
+moteurELEC::moteurELEC(){puissance = 95.0 ; typeM = "ELEC"; cylindree = 0;};
 
-float moteurELEC::calculerPuissance(){
-    puissance = 95.0 ;    return puissance;
-};
+float moteurELEC::calculerPuissance(){puissance = 95.0 ; return puissance;};
 
-float moteurELEC::calculerConsommation(){
-    consommation = 0;
-    return consommation;
-};
+float moteurELEC::calculerConsommation(){consommation = 0; return consommation;};
 
-float moteurELEC::calculerPrix(){
-    return 3000;
-};
+float moteurELEC::calculerPrix(){return 3000;};
 
 // MOTERU HYBRIDE
 moteurHYB::moteurHYB(int c){
-    mel = new moteurELEC();
-    mes = new moteurESS(c);
+    mel = new moteurELEC(); //creation d'un objet moteurELEC
+    mes = new moteurESS(c); //creation d'un objet moteurESS
     typeM = "HYB "; cylindree = mes->getCylindree();
 };
 
@@ -107,6 +91,5 @@ float moteurHYB::calculerConsommation(){
 };
 
 float moteurHYB::calculerPrix(){
-    prix = mel->calculerPrix() + mes->calculerPrix();
-    return prix;
+    prix = mel->calculerPrix() + mes->calculerPrix();  return prix;
 };

@@ -1,3 +1,4 @@
+// configurateur.hpp
 #ifndef __CONFIGURATOR_H__
 #define __CONFIGURATOR_H__
     #include "voiture.hpp"

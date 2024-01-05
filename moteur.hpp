@@ -1,3 +1,4 @@
+// moteur.hpp
 #ifndef __MOTEUR_H__
 #define __MOTEUR_H__
     #include <iostream>
@@ -6,8 +7,8 @@
 
     class moteur
     {
-    protected:
-        float puissance, consommation, prix;/* data */
+    protected: 
+        float puissance, consommation, prix;
         string typeM;
         int cylindree;
     public:
@@ -38,8 +39,6 @@
     // MOTEUR DIESEL
     class moteurDIES : public moteurTHER
     {
-    protected:
-        /* data */
     public:
         moteurDIES(int c);
         float calculerConsommation();
@@ -49,8 +48,6 @@
     // MOTEUR ESSENCE 
     class moteurESS : public moteurTHER
     {
-    protected:
-        /* data */
     public:
         moteurESS(int c);
         float calculerConsommation();
@@ -60,8 +57,6 @@
     //__________ MOTEUR ELECTRIQUE ET COMPAGNIE __________
     class moteurELEC : public moteur
     {
-    protected:
-        /* data */
     public:
         moteurELEC();
         float calculerPuissance();
@@ -80,6 +75,4 @@
         float calculerConsommation();
         float calculerPrix();
     };
-
-    
 #endif // __MOTEUR_H__

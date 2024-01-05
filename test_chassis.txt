@@ -1,21 +1,20 @@
-    chassis *ch;
-    char typeCh;
+chassis *ch;
+    int typeCh;
     bool option;
     while(true){
         cout << "\n____________________________________________________\n";
         cout << "Chassis !!!"<<endl;
-        cout << "Option ? 0-STD  1-LUXE"<<endl;
+        cout << "Option ? 0-STD  1-LUXE  : ";
         cin >> option;
-        cout << "Type ? c-COUPE ou b-Berline"<<endl;
+        cout << "Type ? 1-COUPE ou 2-Berline : ";
         cin>>typeCh;
-        if(typeCh=='c'){
+        if(typeCh==1){
             ch = new chassisCOUPE();
-            
-        }else if(typeCh=='b'){
+        }else if(typeCh==2){
             int typeBn;
             ch = new chassisBERLINE();
             cout<<"Chassis Berline !!!"<<endl;
-            cout<<"Modele ? 1-STD  2-4x4  3-BREAK"<<endl;
+            cout<<"Modele ? 1-STD  2-4x4  3-BREAK  : ";
             cin>>typeBn; 
             if(typeBn == 1){
                 ch = new chassisBerlineSTD();

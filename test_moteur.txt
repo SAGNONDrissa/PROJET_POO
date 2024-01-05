@@ -1,29 +1,28 @@
-    cout << "Hello...main !!!!!!!! \n";
+
     moteur *m;
-    char choix_nrg;
+    int choix_nrg;
     int choix_cyl, choix_mth;
     while(true){
         cout << "\n____________________________________________________\n";
-        cout << "TYPE MOTEUR (T-THER   E-ELEC  H-HYB)? " << endl;
+        cout << "TYPE MOTEUR (1-THER   2-ELEC  3-HYB)? : ";
         cin >> choix_nrg;
-        if(choix_nrg=='T'){
-            cout << "Cylindree (valeur entiere)? " << endl;
+        if(choix_nrg== 1){
+            cout << "Cylindree (valeur entiere)? : ";
             cin >> choix_cyl;
             m = new moteurTHER(choix_cyl);
-            cout<< "Entrer 1- moteurDIES ou 2- moteurESS ? "; 
+            cout<< "Entrer 1- moteurDIES ou 2- moteurESS ? : "; 
             cin >> choix_mth;
             if (choix_mth==1)
                 m=new moteurDIES(choix_cyl);
             else 
                 m=new moteurESS(choix_cyl); 
-        }else if(choix_nrg == 'E'){
+        }else if(choix_nrg == 2){
             m = new moteurELEC();
-        }else if(choix_nrg == 'H'){
-            cout << "Cylindree (valeur entiere)? " << endl;
+        }else if(choix_nrg == 3){
+            cout << "Cylindree (valeur entiere)? : ";
             cin >> choix_cyl;
             moteurELEC *mel; moteurESS *mes;
             m=new moteurHYB(choix_cyl);
-            cout<<"hybride motor created "<<endl;
         }
 
         cout<<"Puissance : "<< m->calculerPuissance()<<" cv \n";

@@ -10,15 +10,14 @@
         /* data */
         Voiture *car;
         list<Voiture*> carsDB;
-        int choix;
+        int choix; bool status;
 
     public:
         dataBase(/* args */);
         void inserer(Voiture *vp);
         void lister();
         void selectionner(); 
-        void filtrer(dataBase *db, dataBase *temp_db); 
+        void filtrer(dataBase *db, dataBase *temp_db);
+        void retirer(Voiture *vp);
     };
-    
-    
 #endif 

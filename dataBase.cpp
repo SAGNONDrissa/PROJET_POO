@@ -105,7 +105,8 @@ void dataBase::filtrer(dataBase *db, dataBase *temp_db){
         cout<<"No choice"<<endl;
         break;
     }
+}
 
-
+void dataBase::retirer(Voiture *vp){
 
 }

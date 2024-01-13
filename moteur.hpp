@@ -54,6 +54,14 @@
         float calculerPrix();
     };
 
+    // MOTEUR HYDROGENE
+    class moteurHYD:public moteurTHER{
+        public:
+            moteurHYD(int c);
+            float calculerConsommation();
+            float calculerPrix();
+    };
+    
     //__________ MOTEUR ELECTRIQUE ET COMPAGNIE __________
     class moteurELEC : public moteur
     {
@@ -75,4 +83,6 @@
         float calculerConsommation();
         float calculerPrix();
     };
+
+    
 #endif // __MOTEUR_H__

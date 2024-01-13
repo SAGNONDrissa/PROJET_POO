@@ -90,6 +90,4 @@ float moteurHYB::calculerConsommation(){
     return consommation;
 };
 
-float moteurHYB::calculerPrix(){
-    prix = mel->calculerPrix() + mes->calculerPrix();  return prix;
-};
+float moteurHYB::calculerPrix(){prix = 3000;  return prix;};

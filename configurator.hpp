@@ -15,4 +15,3 @@
     
 #endif // __CONFIGURATOR_H__
 
-// Path: PROJET_VOITURE/voiture.h
